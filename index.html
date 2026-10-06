@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="shortcut icon" href="#" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.3.0/dist/themes/light.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.3.0/dist/themes/dark.css"
+    />
+    <script type="module">
+      // Set the base path so Shoelace can load its assets (icons, etc.)
+      import { setBasePath } from "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.3.0/dist/utilities/base-path.js";
+      setBasePath(
+        "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.3.0/dist/",
+      );
+
+      // Import only the components you use
+      import "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.3.0/dist/components/switch/switch.js";
+      import "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.3.0/dist/components/select/select.js";
+      import "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.3.0/dist/components/option/option.js";
+      import "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.3.0/dist/components/button/button.js";
+      import "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.3.0/dist/components/icon/icon.js";
+      import "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.3.0/dist/components/drawer/drawer.js";
+      import "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.3.0/dist/components/card/card.js";
+      import "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.3.0/dist/components/badge/badge.js";
+    </script>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Freetchio - Find 100% discounts on itch.io</title>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-column">
+        <div id="app-title">
+          <h1>Freetchio</h1>
+          <h6>- Find 100% discounts on itch.io</h6>
+        </div>
+        <div id="filters" class="contain-shoelace">
+          <sl-switch id="sort-by-date">Sort by date</sl-switch>
+          <sl-switch id="hide-viewed-items">Hide viewed items</sl-switch>
+          <div id="filter-categories">
+            <span>Filter by categories</span>
+            <sl-select
+              id="select-category"
+              placeholder="All"
+              max-options-visible="1"
+              multiple
+              clearable
+              size="small"
+            >
+              <sl-option value="game-assets">game-assets</sl-option>
+              <sl-option value="games">games</sl-option>
+              <sl-option value="books">books</sl-option>
+              <sl-option value="comics">comics</sl-option>
+              <sl-option value="tools">tools</sl-option>
+              <sl-option value="game-mods">mods</sl-option>
+              <sl-option value="soundtracks">soundtracks</sl-option>
+              <sl-option value="physical-games">physical games</sl-option>
+              <sl-option value="misc">misc</sl-option>
+            </sl-select>
+          </div>
+        </div>
+      </div>
+      <div class="nav-column contain-shoelace">
+        <sl-button variant="danger" size="medium" circle id="toggle-theme">
+          <sl-icon name="sun-fill" label="Toggle theme"></sl-icon>
+        </sl-button>
+        <sl-button variant="danger" size="medium" circle id="open-info">
+          <sl-icon name="question-circle-fill" label="More info"></sl-icon>
+        </sl-button>
+      </div>
+    </nav>
+
+    <div id="cards" class="contain-shoelace"></div>
+
+    <sl-drawer
+      label="About"
+      class="drawer-overview contain-shoelace"
+      id="info-drawer"
+    >
+      The goal of Freetchio is to make it easy to find 100% discounts on
+      itch.io.
+
+      <br />
+      <br />
+      The code can be found on GitHub:
+      <sl-button
+        variant="text"
+        href="https://github.com/ShaigroRB/freetchio"
+        target="_blank"
+      >
+        <sl-icon slot="suffix" name="link-45deg"></sl-icon>
+        the website
+      </sl-button>
+      <sl-button
+        variant="text"
+        href="https://github.com/ShaigroRB/go-free-discount-itch"
+        target="_blank"
+      >
+        <sl-icon slot="suffix" name="link-45deg"></sl-icon>
+        the scraper lib
+      </sl-button>
+      <div slot="footer">
+        <br />
+        © 2023-2025 Shaigro
+        <br />
+      </div>
+    </sl-drawer>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
